@@ -1,0 +1,16 @@
+.Button{
+    size: medium;
+    color:white;
+    background-color: tomato;
+    
+    
+    margin:10px;
+    font-size:30px;
+  }
+  .control-btns{
+   
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  
+  }
