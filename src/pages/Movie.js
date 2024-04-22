@@ -36,7 +36,7 @@ function Movie({movies}){
             {/* 쿼리스트링을 이용한 검색 */}
             <br/><input className="filter-movie" value={searchParams.get('filter') || ""} onChange={changeQueryString} placeholder="검색할 영화를 ..."/>
 
-            {/* 특정 블로그 포스트 */}
+            {/* 영화 api의 데이터값 */}
             {movie ? 
                 <div className="movie-container">
                     <h1>{movie.title_long}</h1>

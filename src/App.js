@@ -32,7 +32,7 @@ class App extends Component {
 
   //api사용
   componentDidMount(){ 
-    fetch('https://yts.mx/api/v2/list_movies.json?limit=5')
+    fetch('https://yts.mx/api/v2/list_movies.json?limit=6')
     .then( res => res.json())
     .then( result => { 
       const {data: {movies}} = result 
