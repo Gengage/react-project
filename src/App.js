@@ -1,64 +1,86 @@
 import './App.css';
 import React, { Component } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import { Home, About, NotFound, Movie } from './pages';
-import Menu from './Menu'
-import Sidebar from './Sidebar'
-import Button from './Button'
+import Movie from './Movie';
+import Banner from './Banner';
 
 
 class App extends Component {
-  homeMenu = [
-    {
-      url: "/",
-      name: "HOME"
-    },
-    {
-      url: "/about",
-      name: "ABOUT"
-    },
-    {
-      url: "/movies",
-      name: "MOVIE"
-    },
-  ]
+  index = 0
+  prevIndex = 0 
   state = {
-    open: false,
-    movies:[] 
+      loading: true,
+      movies: [],
+      recommends: [],
   }
-  showSidebar = () => {
-    this.setState({ open: !this.state.open })
+  getSimilarMovies = (movies) => {
+    fetch(`https://yts.mx/api/v2/movie_suggestions.json?movie_id=${movies[this.index].id}`)
+    .then(res => res.json())
+    .then(result => {
+        const {data: {movies: recommends}} = result
+        /* console.log(`${movies[this.index].title} 와 유사한 영화 추천: `, recommends) */
+        this.setState({recommends})
+    })
+  }
+  selectRandomIndex = (movies) => {
+    return Math.floor(Math.random()*movies.length)
+  }
+  selectRandomMovie = () => {
+    const { movies } = this.state 
+    do{
+      this.prevIndex = this.index 
+      this.index = this.selectRandomIndex(movies)
+    }while(this.prevIndex === this.index)
+
+    this.getSimilarMovies(movies)
   }
 
-  //api사용
-  componentDidMount(){ 
-    fetch('https://yts.mx/api/v2/list_movies.json?limit=6')
+  componentDidMount(){
+    fetch('https://yts.mx/api/v2/list_movies.json?limit=30&minimum_rating=7&sort_by=title&order_by=asc')
     .then( res => res.json())
-    .then( result => { 
-      const {data: {movies}} = result 
-      this.setState({movies}) 
-    }) 
+    .then( result => {
+      const {data: {movies}} = result
+      /* console.log(movies) */
+      this.setState({loading: false, movies})
+      this.timerID = setInterval(this.selectRandomMovie, 3000)     //랜덤 포스터 속도
+      this.getSimilarMovies(movies)
+    })
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.timerID)  
   }
 
   render(){
-    const { open,movies } = this.state
-    const { homeMenu } = this
-    return (
-      <div className="App">
-        <Button handleClick={this.showSidebar}>Menu</Button>
-        <Sidebar open={open}>
-          <Menu menus={homeMenu}></Menu>
-        </Sidebar>
-        <Routes>
-          <Route exact path="/" element={<Home/>}/>
-          <Route exact path="/about" element={<About/>}/>
-          <Route path="/movies" element={<Movie movies={movies}/>}>
-            <Route path=":movieId" element={<Movie/>} />
-          </Route>
-          <Route path="*" element={<NotFound/>}/>
-        </Routes>
-      </div>
-    );
+    const {loading, movies, recommends} = this.state
+
+    if(loading){
+      return (
+        <div className='loading'>
+          <h1>Loading ...</h1>
+        </div>
+      )
+    }else{
+      return (
+        <>
+          <Banner {...movies[this.index]} recommends={recommends}/>
+          <div className='movies'>
+            {movies.map(movie => {
+              return (
+                <Movie 
+                  key={movie.id}
+                  title={movie.title}
+                  genres={movie.genres}
+                  cover={movie.medium_cover_image}
+                  summary={movie.summary}
+                  rating={movie.rating}
+                ></Movie>
+
+              )
+            })}
+          </div>
+        </>
+      )
+    }
   }
 }
 

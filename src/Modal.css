@@ -1,0 +1,22 @@
+.Modal {
+    
+    width: 50%;
+    height:60%;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 1px 1px 5px 1px tan;
+    background: white;
+    z-index: 1;
+    position: fixed;
+    overflow: hidden;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .open{
+    display: block;
+  }
+  .close{
+    display: none;
+  }
+ 

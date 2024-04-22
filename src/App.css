@@ -1,3 +1,17 @@
-.App {
+.loading{
+  position: absolute; 
+  left: 50%; 
+  top: 50%; 
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+}
+.movies{
+  /* border:1px solid blue; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  margin: 100px auto;
   text-align: center;
 }
