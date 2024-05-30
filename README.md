@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+HTML과 CSS 약간의 Javascript로 약 2주정도의 프로젝트 입니다
+주제는 영화 커뮤니티 사이트로 영화값이 비싼 요즘 영화의 선택에 도움을 줄 수 있는 사이트를 만들어 보고자 제작하게 되었습니다
+화면 구성은 
+1.박스오피스를 볼 수 있는 메인페이지
+2.로그인 기능을 할 수 있는 로그인페이지
+3.영화의 평점을 입력하고 확인할 수 있는 리뷰페이지
+4.다른사람과 영화의 후기를 이야기 할 수 있는 토론페이지로 구성하였습니다
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+페이지 별 소개를 하겠습니다
+1.main 페이지
+사이트 시작지점은 main페이지 입니다. 모달창을 배치하여 관리자의 공지를 볼 수 있습니다
+롤링 기능을 사용하여 한 주의 박스오피스를 구현 하였습니다
+2.login 페이지
+로그인 페이지에서는 math함수를 사용하여 왼쪽에 20개의 포스터가 랜덤으로 표시됩니다
+로그인 페이지에서 비밀번호 입력에 눈 표시를 클릭하면 비밀번호가 보입니다
+회원가입버튼을 클릭하면 회원가입 페이지로 이동합니다
+로그인 페이지에서 로그인하기를 선택하면 메인페이지에서 로그인 한것으로 표시됩니다
+3.간단리뷰 페이지
+영화 포스터 선택 페이지에서 영화를 선택시 리뷰 페이지로 이동합니다
+감상평 입력과 별점을 클릭 할 수 있습니다
+별점은 호버시 변경이 가능하며 클릭해야만 선택이 됩니다
+감상평은 짧게 작성하기 위해 글자수를 20자로 제한 하였습니다
+다른 이용자의 감상평도 확인할 수 있도록 하였습니다
+4.영화토론 페이지
+간단리뷰 페이지처럼 영화선택 페이지에서 선택 후 이동합니다
+채팅 프로그램처럼 본인은 오른쪽에 배치하였고 다른 사용자는 왼쪽에 배치하였습니다
+다른사람과 구별하는 방법은 프로필 사진에 따라 구별할 수 있도록 하였습니다.
